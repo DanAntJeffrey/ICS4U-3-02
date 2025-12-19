@@ -1,0 +1,11 @@
+Heap's Algorithm is hard to explain so I figured it would be best to write it
+
+Assume you are passing into the genSquare function array "square" with values {1, 2, 3}, as well as the size of the array, or 3
+
+The size variable here is essentially the index after the section that is undergoing "permutation" (AKA reordering all values up until size - 1) via the genSquare method.
+Each value at index size or greater is now unchanging and fixed for the rest of the changing of the list
+
+Size getting decreased by 1 with the recursive call of genSquare means that slowly the final values become fixed as it goes through the array
+Then when size == 1 it means no changes are left to be made to the array and each index will have a unique value
+
+Even/Odd thing is just how Heap's Algorithm works, no real proof to be done behind it

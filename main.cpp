@@ -2,50 +2,52 @@
 * This program prints out
 * the Magic Sqaures.
 *
-* @author  Dominic M.
+* @author  D. Jeffrey
 * @version 1.0
-* @since   2024-11-29
+* @since   2025-12-19
 */
 
-final class Main {
-    private Main() {
-        // Prevent instantiation
-        // Optional: throw an exception e.g. AssertionError
-        // if this ever *is* called
-        throw new IllegalStateException("Cannot be instantiated");
-    }
+#include <iostream>
+#include <string>
+#include <vector>
 
+using std::cout;
+using std::vector;
+
+
+class Main {
+ public:
     /** The top left index. */
-    public static final int ZERO = 0;
+    static const int ZERO = 0;
     /** The top middle index. */
-    public static final int ONE = 1;
+    static const int ONE = 1;
     /** The top right index. */
-    public static final int TWO = 2;
+    static const int TWO = 2;
     /** The middle left index. */
-    public static final int THREE = 3;
+    static const int THREE = 3;
     /** The center index. */
-    public static final int FOUR = 4;
+    static const int FOUR = 4;
     /** The middle right index. */
-    public static final int FIVE = 5;
+    static const int FIVE = 5;
     /** The lower left index. */
-    public static final int SIX = 6;
+    static const int SIX = 6;
     /** The lower center index. */
-    public static final int SEVEN = 7;
+    static const int SEVEN = 7;
     /** The lower right index. */
-    public static final int EIGHT = 8;
+    static const int EIGHT = 8;
     /** The maximum number for magicNumbers. */
-    public static final int NINE = 9;
+    static const int NINE = 9;
     /** The maximum number for magicNumbers. */
-    public static final int MAGICNUM = 15;
+    static const int MAGICNUM = 15;
 
     /**
     * Process numbers.
     */
-    private static int numberOfProcess = 0;
+    int numberOfProcess = 0;
     /**
      * Number of magic squares.
      */
-    private static int numberOfMagicSquares = 0;
+    int numberOfMagicSquares = 0;
 
 
     /**
@@ -55,7 +57,7 @@ final class Main {
      * @param square The current state of the square being generated.
      * @param size the current index after the section that is undergoing "permutation" (AKA reordering all values up until size - 1)
      */
-    public static void genSquare(final int[] square, final int size) {
+    void genSquare(vector<int> square, int size) {
         // if size becomes 1 then prints the square
         if (size == 1) {
             numberOfProcess ++;
@@ -91,7 +93,7 @@ final class Main {
      * @param preSquare The square to check.
      * @return True if the square is a magic square, false otherwise.
      */
-    public static boolean isMagic(final int[] preSquare) {
+    bool isMagic(vector<int> preSquare) {
         // returns true or false for whether or not array is a magic square
         // this assumes there are no repeats in the square
         int row1 = preSquare[ZERO] + preSquare[ONE] + preSquare[TWO];
@@ -113,34 +115,32 @@ final class Main {
      *
      * @param outputSquare The square to print.
      */
-    public static void printMagicSquare(final int[] outputSquare) {
+    void printMagicSquare(vector<int> outputSquare) {
         // prints inputted array in a magic square format
-        System.out.println("\n*****");
-        for (int count = 0; count < outputSquare.length; count++) {
+        cout << "\n\n*****\n";
+        for (int count = 0; count < NINE; count++) {
             if (count == THREE || count == SIX) {
-                System.out.println();
-                System.out.print(outputSquare[count] + " ");
+                cout << "\n";
+                cout << outputSquare[count] << " ";
             } else {
-                System.out.print(outputSquare[count] + " ");
+                cout << outputSquare[count] << " ";
             }
         }
-        System.out.println("\n*****");
+        cout << "\n\n*****";
     }
 
     /**
      * This is the main function.
-     *
-     * @param args no args used
      */
-    public static void main(final String[] args) {
+    void main() {
         // main stub, get user input here
-        int[] magicSquare = {ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE};
-        System.out.println("\n");
-        System.out.println("All Possible Magic Squares (3x3):\n");
+        std::vector<int> magicSquare = {ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE};
+        cout << "\n\n";
+        cout << "\nAll Possible Magic Squares (3x3):\n";
         genSquare(magicSquare, NINE);
 
-        System.out.println("\nNumber of processes: " + numberOfProcess);
-        System.out.println("Number of Magic Squares: " + numberOfMagicSquares);
-        System.out.println("\nDone.");
+        cout << "\n\nNumber of processes: " << numberOfProcess;
+        cout << "\nNumber of Magic Squares: " << numberOfMagicSquares;
+        cout << "\n\nDone.";
     }
-}
+};
